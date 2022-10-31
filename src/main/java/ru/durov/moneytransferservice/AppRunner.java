@@ -1,12 +1,12 @@
-package ru.durov.moneytransferservice.util;
+package ru.durov.moneytransferservice;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import ru.durov.moneytransferservice.model.BankAccount;
 import ru.durov.moneytransferservice.model.Card;
-import ru.durov.moneytransferservice.service.BankAccountService;
 import ru.durov.moneytransferservice.service.CardService;
+import ru.durov.moneytransferservice.util.StringDateFormatter;
 
 import java.math.BigDecimal;
 
@@ -22,7 +22,7 @@ public class AppRunner implements CommandLineRunner {
 
     @Override
     @Transactional
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         BankAccount firstBankAccount = BankAccount.builder()
                 .accountNumber("40702865400000000222")
                 .currency("RUR")

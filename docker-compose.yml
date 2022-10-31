@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  database:
+    container_name: money_transfer_database
+    image: 'postgres'
+    #    restart: on-failure
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=money_transfer_database
+
+  backend:
+    container_name: money_transfer_backend
+    build: .
+    links:
+      - database
+    #    restart: on-failure
+    ports:
+      - "5500:5500"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/money_transfer_database
+    depends_on:
+      - database

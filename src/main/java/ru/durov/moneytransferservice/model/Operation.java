@@ -1,18 +1,18 @@
 package ru.durov.moneytransferservice.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-@Entity
-@Builder
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+@Builder
+@Entity
+@Table(name = "operation")
 public class Operation {
     @Id
     @Column(name = "operation_id")
@@ -25,10 +25,12 @@ public class Operation {
     private Card cardTo;
     @Column(name = "currency")
     private String currency;
-    @Column(name = "value")
-    private BigDecimal value;
+    @Column(name = "amount")
+    private BigDecimal amount;
     @Column(name = "commission")
     private BigDecimal commission;
+    @Column(name = "total_amount")
+    private BigDecimal totalAmount;
     @Column(name = "verification_code")
     private String verificationCode;
     @Column(name = "is_completed")

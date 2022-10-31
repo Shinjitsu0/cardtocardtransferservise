@@ -6,5 +6,5 @@ import ru.durov.moneytransferservice.model.Card;
 import java.util.Optional;
 
 public interface CardRepository extends JpaRepository<Card, Long> {
-    public Optional<Card> findCardByCardNumber(String cardNumber);
+    Optional<Card> findCardByCardNumber(String cardNumber);
 }

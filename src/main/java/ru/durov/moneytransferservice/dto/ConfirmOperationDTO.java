@@ -1,40 +1,20 @@
 package ru.durov.moneytransferservice.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+@Data
+@AllArgsConstructor
 public class ConfirmOperationDTO {
 
+    @NotNull(message = "Поле 'operationID' не должно быть null")
+    @NotBlank(message = "Поле 'operationID' не должно быть пустым")
     private String operationId;
 
+    @NotNull(message = "Поле 'code' не должно быть null")
+    @NotBlank(message = "Поле 'code' не должно быть пустым")
     private String code;
-
-    public ConfirmOperationDTO(String operationId, String code) {
-        this.operationId = operationId;
-        this.code = code;
-    }
-
-    public ConfirmOperationDTO() {
-    }
-
-    public String getOperationId() {
-        return operationId;
-    }
-
-    public void setOperationId(String operationId) {
-        this.operationId = operationId;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    @Override
-    public String toString() {
-        return "ConfirmOperationDTO{" +
-                "operationId='" + operationId + '\'' +
-                ", code='" + code + '\'' +
-                '}';
-    }
 }

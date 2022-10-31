@@ -1,19 +1,18 @@
 package ru.durov.moneytransferservice.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Entity
-@Table(name = "bank_account")
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Builder
+@Entity
+@Table(name = "bank_account")
 public class BankAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +23,6 @@ public class BankAccount {
     private String currency;
     @Column(name = "value")
     private BigDecimal value;
-
     @OneToMany(mappedBy = "bankAccount")
     private List<Card> cards;
 }
